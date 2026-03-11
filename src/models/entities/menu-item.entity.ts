@@ -23,11 +23,11 @@ export class MenuItem {
   @Column({ length: 255 })
   label!: string;
 
-  @Column({ length: 100, nullable: true })
+  @Column({ type: 'varchar', length: 100, nullable: true })
   icon!: string | null;
 
   /** Frontend route path */
-  @Column({ length: 500, nullable: true })
+  @Column({ type: 'varchar', length: 500, nullable: true })
   route!: string | null;
 
   /** Parent menu item ID for tree structure (null = top-level) */
@@ -42,7 +42,7 @@ export class MenuItem {
   children!: MenuItem[];
 
   /** Privilege code required to see this menu item */
-  @Column({ name: 'privilege_code', length: 100, nullable: true })
+  @Column({ name: 'privilege_code', type: 'varchar', length: 100, nullable: true })
   privilegeCode!: string | null;
 
   /** Sort order within the same level/section */
@@ -50,7 +50,7 @@ export class MenuItem {
   sortOrder!: number;
 
   /** Logical section grouping (e.g. 'main', 'admin', 'settings') */
-  @Column({ length: 100, nullable: true })
+  @Column({ type: 'varchar', length: 100, nullable: true })
   section!: string | null;
 
   /** Organization this menu belongs to */

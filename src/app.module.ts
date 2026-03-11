@@ -26,7 +26,7 @@ import { Route } from './models/entities/route.entity';
         username: config.get<string>('DATABASE_USER', 'zorbit'),
         password: config.get<string>('DATABASE_PASSWORD', 'zorbit_dev'),
         entities: [MenuItem, Route],
-        synchronize: false,
+        synchronize: config.get<string>('DATABASE_SYNCHRONIZE', 'false') === 'true',
         logging: config.get<string>('NODE_ENV') !== 'production',
       }),
     }),

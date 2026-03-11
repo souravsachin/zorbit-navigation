@@ -33,7 +33,7 @@ export class Route {
   method!: string;
 
   /** Privilege code required to access this route */
-  @Column({ name: 'privilege_code', length: 100, nullable: true })
+  @Column({ name: 'privilege_code', type: 'varchar', length: 100, nullable: true })
   privilegeCode!: string | null;
 
   /** Organization this route belongs to */
