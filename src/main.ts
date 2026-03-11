@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<void> {
@@ -18,6 +19,18 @@ async function bootstrap(): Promise<void> {
   );
 
   app.enableCors();
+
+  const config = new DocumentBuilder()
+    .setTitle('Zorbit Navigation')
+    .setDescription('Dynamic navigation menu management, route registration, and per-user menu generation based on roles and privileges.')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .addTag('menus', 'Menu item management within organizations')
+    .addTag('routes', 'Route registration within organizations')
+    .addTag('navigation-resolver', 'Resolved navigation for users based on privileges')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api-docs', app, document);
 
   const configService = app.get(ConfigService);
   const port = configService.get<number>('PORT', 3003);
