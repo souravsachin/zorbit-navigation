@@ -5,9 +5,11 @@ import { AuthModule } from './modules/auth.module';
 import { MenuModule } from './modules/menu.module';
 import { RouteModule } from './modules/route.module';
 import { NavigationResolverModule } from './modules/navigation-resolver.module';
+import { MenuAssemblyModule } from './modules/menu-assembly.module';
 import { EventsModule } from './modules/events.module';
 import { MenuItem } from './models/entities/menu-item.entity';
 import { Route } from './models/entities/route.entity';
+import { HealthController } from './controllers/health.controller';
 
 @Module({
   imports: [
@@ -34,7 +36,9 @@ import { Route } from './models/entities/route.entity';
     MenuModule,
     RouteModule,
     NavigationResolverModule,
+    MenuAssemblyModule,
     EventsModule,
   ],
+  controllers: [HealthController],
 })
 export class AppModule {}

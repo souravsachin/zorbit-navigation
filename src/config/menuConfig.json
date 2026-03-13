@@ -1,0 +1,314 @@
+{
+  "sections": [
+    {
+      "id": "SEC-DA01",
+      "code": "dashboard",
+      "label": "Dashboard",
+      "icon": "dashboard",
+      "seq": 1,
+      "items": [
+        {
+          "id": "PRV-DA01",
+          "code": "dashboard.view",
+          "label": "View Dashboard",
+          "icon": "visibility",
+          "fe_route_config": "/org/{{org_id}}/dashboard",
+          "be_route_config": "/api/v1/O/{{org_id}}/dashboard",
+          "seq": 1,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-DA02",
+          "code": "dashboard.designer",
+          "label": "Dashboard Designer",
+          "icon": "design_services",
+          "fe_route_config": "/org/{{org_id}}/dashboard/designer",
+          "be_route_config": "/api/v1/O/{{org_id}}/dashboard/designer",
+          "seq": 2,
+          "visible_in_menu": true
+        }
+      ]
+    },
+    {
+      "id": "SEC-ID01",
+      "code": "identity",
+      "label": "Identity",
+      "icon": "person",
+      "seq": 2,
+      "items": [
+        {
+          "id": "PRV-ID01",
+          "code": "identity.users.read",
+          "label": "Users",
+          "icon": "people",
+          "fe_route_config": "/org/{{org_id}}/users",
+          "be_route_config": "/api/v1/O/{{org_id}}/users",
+          "seq": 1,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-ID02",
+          "code": "identity.organizations.read",
+          "label": "Organizations",
+          "icon": "business",
+          "fe_route_config": "/org/{{org_id}}/organizations",
+          "be_route_config": "/api/v1/O/{{org_id}}/organizations",
+          "seq": 2,
+          "visible_in_menu": true
+        }
+      ]
+    },
+    {
+      "id": "SEC-AZ01",
+      "code": "authorization",
+      "label": "Authorization",
+      "icon": "security",
+      "seq": 3,
+      "items": [
+        {
+          "id": "PRV-AZ01",
+          "code": "authorization.roles.read",
+          "label": "Roles",
+          "icon": "admin_panel_settings",
+          "fe_route_config": "/org/{{org_id}}/roles",
+          "be_route_config": "/api/v1/O/{{org_id}}/roles",
+          "seq": 1,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-AZ02",
+          "code": "authorization.privileges.read",
+          "label": "Privileges",
+          "icon": "verified_user",
+          "fe_route_config": "/org/{{org_id}}/privileges",
+          "be_route_config": "/api/v1/G/privileges",
+          "seq": 2,
+          "visible_in_menu": true
+        }
+      ]
+    },
+    {
+      "id": "SEC-NV01",
+      "code": "navigation",
+      "label": "Navigation",
+      "icon": "menu",
+      "seq": 4,
+      "items": [
+        {
+          "id": "PRV-NV01",
+          "code": "navigation.menus.read",
+          "label": "Menu Items",
+          "icon": "list",
+          "fe_route_config": "/org/{{org_id}}/navigation/menus",
+          "be_route_config": "/api/v1/O/{{org_id}}/navigation/menus",
+          "seq": 1,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-NV02",
+          "code": "navigation.routes.read",
+          "label": "Routes",
+          "icon": "route",
+          "fe_route_config": "/org/{{org_id}}/navigation/routes",
+          "be_route_config": "/api/v1/O/{{org_id}}/navigation/routes",
+          "seq": 2,
+          "visible_in_menu": true
+        }
+      ]
+    },
+    {
+      "id": "SEC-MS01",
+      "code": "messaging",
+      "label": "Messaging",
+      "icon": "email",
+      "seq": 5,
+      "items": [
+        {
+          "id": "PRV-MS01",
+          "code": "messaging.topics.read",
+          "label": "Topics",
+          "icon": "topic",
+          "fe_route_config": "/org/{{org_id}}/messaging/topics",
+          "be_route_config": "/api/v1/O/{{org_id}}/messaging/topics",
+          "seq": 1,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-MS02",
+          "code": "messaging.events.read",
+          "label": "Event Log",
+          "icon": "receipt_long",
+          "fe_route_config": "/org/{{org_id}}/messaging/events",
+          "be_route_config": "/api/v1/O/{{org_id}}/messaging/events",
+          "seq": 2,
+          "visible_in_menu": true
+        }
+      ]
+    },
+    {
+      "id": "SEC-AU01",
+      "code": "audit",
+      "label": "Audit",
+      "icon": "fact_check",
+      "seq": 6,
+      "items": [
+        {
+          "id": "PRV-AU01",
+          "code": "audit.logs.read",
+          "label": "Audit Logs",
+          "icon": "history",
+          "fe_route_config": "/org/{{org_id}}/audit/logs",
+          "be_route_config": "/api/v1/O/{{org_id}}/audit/logs",
+          "seq": 1,
+          "visible_in_menu": true
+        }
+      ]
+    },
+    {
+      "id": "SEC-PV01",
+      "code": "pii-vault",
+      "label": "PII Vault",
+      "icon": "enhanced_encryption",
+      "seq": 7,
+      "items": [
+        {
+          "id": "PRV-PV01",
+          "code": "pii-vault.tokens.read",
+          "label": "Token Registry",
+          "icon": "vpn_key",
+          "fe_route_config": "/org/{{org_id}}/pii-vault/tokens",
+          "be_route_config": "/api/v1/O/{{org_id}}/pii-vault/tokens",
+          "seq": 1,
+          "visible_in_menu": true
+        }
+      ]
+    },
+    {
+      "id": "SEC-ST01",
+      "code": "settings",
+      "label": "Settings",
+      "icon": "settings",
+      "seq": 8,
+      "items": [
+        {
+          "id": "PRV-ST01",
+          "code": "settings.general.read",
+          "label": "General Settings",
+          "icon": "tune",
+          "fe_route_config": "/org/{{org_id}}/settings/general",
+          "be_route_config": "/api/v1/O/{{org_id}}/settings",
+          "seq": 1,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-ST02",
+          "code": "settings.secrets.read",
+          "label": "Secrets",
+          "icon": "lock",
+          "fe_route_config": "/org/{{org_id}}/settings/secrets",
+          "be_route_config": "/api/v1/O/{{org_id}}/secrets",
+          "seq": 2,
+          "visible_in_menu": true
+        }
+      ]
+    },
+    {
+      "id": "SEC-AD01",
+      "code": "admin",
+      "label": "Admin",
+      "icon": "admin_panel_settings",
+      "seq": 9,
+      "items": [
+        {
+          "id": "PRV-AD01",
+          "code": "admin.platform.read",
+          "label": "Platform Overview",
+          "icon": "hub",
+          "fe_route_config": "/org/{{org_id}}/admin/platform",
+          "be_route_config": "/api/v1/G/admin/platform",
+          "seq": 1,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-AD02",
+          "code": "admin.licensing.read",
+          "label": "Licensing",
+          "icon": "card_membership",
+          "fe_route_config": "/org/{{org_id}}/admin/licensing",
+          "be_route_config": "/api/v1/O/{{org_id}}/licensing",
+          "seq": 2,
+          "visible_in_menu": true
+        }
+      ]
+    },
+    {
+      "id": "SEC-PR01",
+      "code": "products",
+      "label": "Products",
+      "icon": "inventory_2",
+      "seq": 10,
+      "items": [
+        {
+          "id": "PRV-PR01",
+          "code": "products.product.read",
+          "label": "Product Catalog",
+          "icon": "category",
+          "fe_route_config": "/org/{{org_id}}/products",
+          "be_route_config": "/api/v1/O/{{org_id}}/products",
+          "seq": 1,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-PR02",
+          "code": "products.product.write",
+          "label": "Product Designer",
+          "icon": "edit_note",
+          "fe_route_config": "/org/{{org_id}}/products/designer",
+          "be_route_config": "/api/v1/O/{{org_id}}/products",
+          "seq": 2,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-PR03",
+          "code": "products.encounter.write",
+          "label": "Encounter Types",
+          "icon": "assignment",
+          "fe_route_config": "/org/{{org_id}}/products/encounters",
+          "be_route_config": "/api/v1/O/{{org_id}}/encounter-types",
+          "seq": 3,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-PR04",
+          "code": "products.rating.write",
+          "label": "Rating Engine",
+          "icon": "calculate",
+          "fe_route_config": "/org/{{org_id}}/products/rating",
+          "be_route_config": "/api/v1/O/{{org_id}}/products/rating-factors",
+          "seq": 4,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-PR05",
+          "code": "products.rule.write",
+          "label": "Rules Engine",
+          "icon": "rule",
+          "fe_route_config": "/org/{{org_id}}/products/rules",
+          "be_route_config": "/api/v1/O/{{org_id}}/products/rules",
+          "seq": 5,
+          "visible_in_menu": true
+        },
+        {
+          "id": "PRV-PR06",
+          "code": "products.form.write",
+          "label": "Forms Builder",
+          "icon": "dynamic_form",
+          "fe_route_config": "/org/{{org_id}}/products/forms",
+          "be_route_config": "/api/v1/O/{{org_id}}/products/forms",
+          "seq": 6,
+          "visible_in_menu": true
+        }
+      ]
+    }
+  ]
+}

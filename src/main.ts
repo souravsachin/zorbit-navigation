@@ -28,6 +28,7 @@ async function bootstrap(): Promise<void> {
     .addTag('menus', 'Menu item management within organizations')
     .addTag('routes', 'Route registration within organizations')
     .addTag('navigation-resolver', 'Resolved navigation for users based on privileges')
+    .addTag('menu-assembly', 'Privilege-driven dynamic menu assembly with handlebars templating')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);

@@ -73,6 +73,8 @@ npm run migration:run
 npm run start:dev
 ```
 
+Service runs on port 3003 (default). Production/server: port 3103.
+
 ## Events Published
 
 - navigation.menu.updated

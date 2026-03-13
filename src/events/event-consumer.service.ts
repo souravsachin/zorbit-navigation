@@ -1,8 +1,9 @@
-import { Injectable, OnModuleInit, OnModuleDestroy, Logger } from '@nestjs/common';
+import { Injectable, OnModuleInit, OnModuleDestroy, Logger, Optional } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Kafka, Consumer, EachMessagePayload } from 'kafkajs';
 import { createKafkaConfig } from '../config/kafka.config';
 import { AuthorizationEvents, ZorbitEventEnvelope } from './navigation.events';
+import { MenuAssemblyService } from '../services/menu-assembly.service';
 
 /**
  * Consumes authorization domain events from Kafka.
@@ -14,7 +15,10 @@ export class EventConsumerService implements OnModuleInit, OnModuleDestroy {
   private consumer!: Consumer;
   private kafka!: Kafka;
 
-  constructor(private readonly configService: ConfigService) {}
+  constructor(
+    private readonly configService: ConfigService,
+    @Optional() private readonly menuAssemblyService?: MenuAssemblyService,
+  ) {}
 
   async onModuleInit(): Promise<void> {
     const kafkaConfig = createKafkaConfig(this.configService);
@@ -67,23 +71,35 @@ export class EventConsumerService implements OnModuleInit, OnModuleDestroy {
       const envelope: ZorbitEventEnvelope = JSON.parse(value);
       this.logger.debug(`Received event ${envelope.eventType} from topic ${topic}`);
 
-      // TODO: Implement handlers for authorization events
-      // e.g. invalidate cached navigation trees when privileges change
       switch (envelope.eventType) {
         case AuthorizationEvents.ROLE_CREATED:
           this.logger.log(`Role created: ${JSON.stringify(envelope.payload)}`);
+          this.invalidateMenuCaches();
           break;
         case AuthorizationEvents.ROLE_UPDATED:
           this.logger.log(`Role updated: ${JSON.stringify(envelope.payload)}`);
+          this.invalidateMenuCaches();
           break;
         case AuthorizationEvents.PRIVILEGE_ASSIGNED:
           this.logger.log(`Privilege assigned: ${JSON.stringify(envelope.payload)}`);
+          this.invalidateMenuCaches();
           break;
         default:
           this.logger.warn(`Unknown event type: ${envelope.eventType}`);
       }
     } catch (error) {
       this.logger.error(`Error processing message from topic ${topic}`, error);
+    }
+  }
+
+  /**
+   * Invalidate all cached menus when authorization events indicate
+   * privilege or role changes that may affect navigation visibility.
+   */
+  private invalidateMenuCaches(): void {
+    if (this.menuAssemblyService) {
+      this.menuAssemblyService.invalidateCache();
+      this.logger.debug('Invalidated menu assembly caches due to authorization event');
     }
   }
 }
